@@ -91,7 +91,7 @@ under the License.
     <javaVersion>1.7</javaVersion>
     <maven.compiler.source>${javaVersion}</maven.compiler.source>
     <maven.compiler.target>${javaVersion}</maven.compiler.target>
-    <pmdVersion>6.0.1</pmdVersion>
+    <pmdVersion>6.2.0-SNAPSHOT</pmdVersion>
     <sitePluginVersion>3.4</sitePluginVersion>
     <projectInfoReportsPluginVersion>2.8</projectInfoReportsPluginVersion>
     <mavenPluginToolsVersion>3.5</mavenPluginToolsVersion>
@@ -141,7 +141,11 @@ under the License.
       <artifactId>pmd-jsp</artifactId>
       <version>${pmdVersion}</version>
     </dependency>
-
+    <dependency>
+      <groupId>net.sourceforge.pmd</groupId>
+      <artifactId>pmd-plsql</artifactId>
+      <version>${pmdVersion}</version>
+    </dependency>
     <!-- Support logging of PMD through slf4j. See also MPMD-244 -->
     <dependency>
         <groupId>org.slf4j</groupId>

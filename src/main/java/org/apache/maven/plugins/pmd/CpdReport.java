@@ -52,6 +52,7 @@ import net.sourceforge.pmd.cpd.Language;
 import net.sourceforge.pmd.cpd.LanguageFactory;
 import net.sourceforge.pmd.cpd.Match;
 import net.sourceforge.pmd.cpd.Renderer;
+import net.sourceforge.pmd.cpd.Tokenizer;
 import net.sourceforge.pmd.cpd.XMLRenderer;
 
 /**
@@ -108,6 +109,13 @@ public class CpdReport
     @Parameter( property = "cpd.ignoreIdentifiers", defaultValue = "false" )
     private boolean ignoreIdentifiers;
 
+    /**
+     * A regular expression to specify a pattern to exclude from tokenizer.
+     *
+     */
+    @Parameter( property = "skipBlocksPattern" )
+    private String skipBlocksPattern;
+    
     /** The CPD instance used to analyze the files. Will itself collect the duplicated code matches. */
     private CPD cpd;
 
@@ -241,6 +249,11 @@ public class CpdReport
         if ( ignoreIdentifiers )
         {
             p.setProperty( JavaTokenizer.IGNORE_IDENTIFIERS, "true" );
+        }
+
+        if ( skipBlocksPattern != null && !skipBlocksPattern.equals( "" ) )
+        {
+            p.setProperty( Tokenizer.OPTION_SKIP_BLOCKS_PATTERN, skipBlocksPattern );
         }
 
         try
